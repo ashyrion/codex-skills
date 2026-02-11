@@ -8,3 +8,4 @@
 - Document updates/plans => planner-doc-writer (co-owner)
 - Security/compliance/public-repo safety => security-compliance-guard (leader)
 - Migration planning/cutover sequencing => data-migration-operator (leader)
+- New feature proposal and scope discussion => feature-discovery-facilitator (leader)

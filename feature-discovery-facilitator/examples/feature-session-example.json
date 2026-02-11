@@ -1,0 +1,14 @@
+{
+  "input": {
+    "proposal": "pause policy 개선",
+    "goal": "운영자의 일별 배정 변경 안정성 확보"
+  },
+  "expected_output": {
+    "featureBrief": "작성됨",
+    "scopeMatrix": {"in": ["pause rule"], "out": ["app UI redesign"]},
+    "roleAssignment": ["backend", "admin", "qa"],
+    "sideEffectMatrix": "작성됨",
+    "todoBacklog": "우선순위 포함",
+    "decisionLog": "작성됨"
+  }
+}

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Feature Discovery Facilitator"
+  short_description: "기능 제안 검토·범위확정·역할분배를 주도하는 리더"
+  default_prompt: "Use $feature-discovery-facilitator to turn a feature proposal into scope, ownership, side-effect analysis, and prioritized TODOs."
+
+policy:
+  allow_implicit_invocation: true

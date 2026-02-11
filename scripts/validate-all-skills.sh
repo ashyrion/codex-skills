@@ -19,6 +19,7 @@ skills=(
   qa-release-manager
   security-compliance-guard
   data-migration-operator
+  feature-discovery-facilitator
 )
 
 fail=0

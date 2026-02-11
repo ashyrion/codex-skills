@@ -12,6 +12,10 @@
 - `stack-orchestrator-lead`
 - 역할: 토픽 분류, 리더 지정, 단계 게이트 판정, 핸드오프 관리
 
+### 기획 리더
+- `feature-discovery-facilitator`
+- 역할: 기능 제안 검토, 범위 확정, 역할 분배, 사이드이펙트 분석, TODO/디시전 로그 관리
+
 ### 문서
 - `planner-doc-writer`
 - 역할: 마스터 문서/태스크 문서 구조 유지, 추적성 매트릭스 관리
@@ -85,11 +89,12 @@ cd ~/.codex/skills
 
 ## 5) 기본 운영 순서(권장)
 1. `stack-orchestrator-lead`로 토픽 인입/리더 지정
-2. `planner-doc-writer`로 문서/태스크 동기화
-3. 전문 스킬(backend/admin/mobile-user/mobile-rider) 실행
-4. `test-automation-specialist`로 게이트 검증
-5. `qa-release-manager`로 배포/마이그레이션/스모크
-6. `stack-orchestrator-lead`가 최종 판정
+2. `feature-discovery-facilitator`로 제안 검토/범위확정/역할분배
+3. `planner-doc-writer`로 문서/태스크 동기화
+4. 전문 스킬(backend/admin/mobile-user/mobile-rider) 실행
+5. `test-automation-specialist`로 게이트 검증
+6. `qa-release-manager`로 배포/마이그레이션/스모크
+7. `stack-orchestrator-lead`가 최종 판정
 
 ## 6) 커밋 규칙(강제)
 - 형식: `<type>: <한국어 요약>`
@@ -288,3 +293,12 @@ cd ~/.codex/skills
 - [Opportunity Solution Tree](https://www.producttalk.org/opportunity-solution-tree/)
 - [RICE Scoring](https://www.intercom.com/blog/rice-simple-prioritization-for-product-managers/)
 - [DACI Decision Making](https://www.atlassian.com/team-playbook/plays/daci)
+
+
+## 15) 기능 제안 디스커션 산출물(기획 리더)
+- featureBrief
+- scopeMatrix (in/out)
+- roleAssignment
+- sideEffectMatrix
+- todoBacklog
+- decisionLog
