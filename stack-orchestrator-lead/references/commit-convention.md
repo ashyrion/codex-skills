@@ -15,3 +15,6 @@
 - `feat: 스케줄 배정 우선순위 로직 추가`
 - `fix: 휴무일 편집 가능 버그 수정`
 - `docs: 프로젝트 프로파일 작성 가이드 보강`
+
+## Hook setup (per clone)
+- Run `scripts/setup-git-hooks.sh` once after clone.
