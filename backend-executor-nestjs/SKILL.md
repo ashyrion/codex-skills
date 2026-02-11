@@ -13,6 +13,8 @@ description: Backend specialist for NestJS/TypeORM/GraphQL stacks. Use for domai
 2. `references/backend-checklist.md`
 3. `references/migration-runbook.md`
 4. `references/contract-guardrails.md`
+5. `references/graphql-type-patterns.md`
+6. `references/scheduling-refactor-checkpoints.md`
 
 ## Workflow
 1. Confirm impacted domain/service files.

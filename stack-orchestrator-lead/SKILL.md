@@ -16,7 +16,8 @@ description: Lead skill for multi-repo delivery. Use to classify topics, assign 
 4. `references/orchestration-playbook.md`
 5. `references/gate-policy.md`
 6. `references/external-benchmarks.md`
-7. `references/commit-convention.md`
+7. `references/pattern-catalog.md`
+8. `references/commit-convention.md`
 
 ## Inputs
 - `topic`, `goal`, `scope`, `constraints`, `targetRepos`.

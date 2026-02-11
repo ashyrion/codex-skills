@@ -6,6 +6,7 @@ Fill this once per project and save as `references/project-profile.md`.
 - backendRepo:
 - adminRepo:
 - mobileRepo:
+- riderMobileRepo:
 - docsRoot:
 
 ## Contracts

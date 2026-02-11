@@ -13,6 +13,8 @@ description: Mobile compatibility specialist. Use to verify backend changes pres
 2. `references/contract-checklist.md`
 3. `references/rn-impact-triage.md`
 4. `references/snapshot-protocol.md`
+5. `references/client-contract-matrix.md`
+6. `references/semantic-drift-checklist.md`
 
 ## Workflow
 1. Identify affected app queries/hooks.

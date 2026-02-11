@@ -13,6 +13,7 @@ description: Test lead skill. Use for unit/integration/E2E automation, coverage 
 2. `references/test-matrix.md`
 3. `references/report-schema.md`
 4. `references/flaky-policy.md`
+5. `references/multi-client-test-matrix.md`
 
 ## Workflow
 1. Build test matrix from docs/tasks.

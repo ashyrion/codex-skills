@@ -3,7 +3,7 @@
 이 문서는 `~/.codex/skills` 스킬 세트를 실제 프로젝트에 적용하고 유지보수하기 위한 운영 가이드다.
 
 ## 1) 목적
-- 멀티 리포(backend/admin/mobile) 작업을 역할 기반으로 분담한다.
+- 멀티 리포(backend/admin/mobile-user/mobile-rider) 작업을 역할 기반으로 분담한다.
 - 토픽별 리더 전환과 게이트 기반 진행(PASS/FAIL/BLOCKED)으로 작업 품질을 관리한다.
 - 스킬 자체를 다른 프로젝트에서도 재사용할 수 있게 프로젝트 종속 설정을 분리한다.
 
@@ -79,7 +79,7 @@ cd ~/.codex/skills
 ## 5) 기본 운영 순서(권장)
 1. `stack-orchestrator-lead`로 토픽 인입/리더 지정
 2. `planner-doc-writer`로 문서/태스크 동기화
-3. 전문 스킬(backend/admin/mobile) 실행
+3. 전문 스킬(backend/admin/mobile-user/mobile-rider) 실행
 4. `test-automation-specialist`로 게이트 검증
 5. `qa-release-manager`로 배포/마이그레이션/스모크
 6. `stack-orchestrator-lead`가 최종 판정
@@ -111,10 +111,26 @@ cd ~/.codex/skills
 - `npm`, `yarn`, `pnpm` 혼용 가능하나 profile에 실제 명령을 명시해야 한다.
 - 스킬 실행 스크립트는 환경변수(`BACKEND_REPO`, `ADMIN_REPO`, `CONTRACT_CHECK_CMD`) 기반이다.
 
-## 8) 스택이 달라질 때 대응 방법
+## 8) 자주 쓰는 패턴/타입
+### 8.1 GraphQL 클라이언트 훅 패턴
+- `gql` + `useQuery`/`useLazyQuery`/`useMutation` 조합을 기본 패턴으로 사용한다.
+- feature 단위 훅 파일에서 쿼리 정의와 훅 래퍼를 함께 관리한다.
+- 타입은 코드생성 타입(`Query`, `QueryArgs`)을 기준으로 고정한다.
+
+### 8.2 백엔드 DTO/리졸버 패턴
+- 요청/응답 DTO를 `request.*.dto.ts`, `response.*.dto.ts`로 분리한다.
+- 도메인 서비스와 리졸버를 분리하고, 클라이언트 응답 DTO는 안정성을 우선한다.
+- 내부 계산 소스 변경은 허용하되 응답 shape 변경은 게이트 실패로 처리한다.
+
+### 8.3 다중 모바일 클라이언트 계약 패턴
+- user 앱(`recl-rn`)과 rider 앱(`recl-rider-rn`)을 동시에 검증한다.
+- shape 불변성 + semantic drift(의미 변화) 검사를 모두 수행한다.
+- 한쪽 앱이라도 FAIL이면 릴리즈 게이트는 FAIL로 판정한다.
+
+## 9) 스택이 달라질 때 대응 방법
 스택이 달라지면 기존 스킬을 억지로 쓰지 말고, 아래 기준으로 분기한다.
 
-### 8.1 백엔드가 NestJS가 아닌 경우
+### 9.1 백엔드가 NestJS가 아닌 경우
 - 선택 1: `backend-executor-nestjs`를 복제해 신규 스킬 생성
   - 예: `backend-executor-fastapi`, `backend-executor-spring`
 - 선택 2: 기존 스킬 유지 + references/scripts만 스택 맞춤 교체
@@ -122,23 +138,23 @@ cd ~/.codex/skills
 권장:
 - 도구/테스트/마이그레이션 방법이 크게 다르면 신규 스킬로 분리
 
-### 8.2 프론트가 React/Vite가 아닌 경우
+### 9.2 프론트가 React/Vite가 아닌 경우
 - `admin-executor-react`를 스택별로 분화
   - 예: `admin-executor-nextjs`, `admin-executor-vue`
 - 레이아웃/권한/검증 규칙은 공통 reference로 재사용
 
-### 8.3 모바일이 RN이 아닌 경우
+### 9.3 모바일이 RN이 아닌 경우
 - `mobile-compat-guardian`를 범용 `client-compat-guardian`으로 확장하거나 신규 생성
 - 핵심은 "계약 불변성 검증 프로토콜" 유지
 
-### 8.4 스택 전환 시 체크리스트
+### 9.4 스택 전환 시 체크리스트
 1. 새 스택 전용 실행 스킬 생성/분리 여부 결정
 2. `project-profile.template.md` 갱신
 3. 실행 스크립트 명령 변경
 4. 테스트 매트릭스/리포트 스키마 갱신
 5. `stack-orchestrator-lead`의 topic-routing 규칙 업데이트
 
-## 9) 새 스킬 추가 절차
+## 10) 새 스킬 추가 절차
 1. 목적/범위 정의
 2. `SKILL.md` 작성(언제 쓰는지, read order, outputs)
 3. `references/` 최소 2개 이상(정책+실행기준)
@@ -146,15 +162,16 @@ cd ~/.codex/skills
 5. `agents/openai.yaml` 작성
 6. `./scripts/validate-all-skills.sh` 통과
 
-## 10) 프로젝트별 `project-profile.md` 작성 예시
-### 10.1 `stack-orchestrator-lead/references/project-profile.md`
+## 11) 프로젝트별 `project-profile.md` 작성 예시
+### 11.1 `stack-orchestrator-lead/references/project-profile.md`
 ```md
 # Project Profile
 
 ## Workspace
 - backendRepo: /path/to/backend-repo
 - adminRepo: /path/to/admin-repo
-- mobileRepo: /path/to/mobile-repo
+- mobileRepo: /path/to/recl-rn
+- riderMobileRepo: /path/to/recl-rider-rn
 - docsRoot: /path/to/docs
 
 ## Contracts
@@ -165,14 +182,14 @@ cd ~/.codex/skills
 - packageManager: npm
 - backendTestCmd: npm run test
 - adminTestCmd: npm run test
-- mobileCheckCmd: npm run test
+- mobileCheckCmd: run both recl-rn and recl-rider-rn checks
 
 ## Gates
 - requiredStages: design, implementation, tests, release
 - passCriteria: all required checks PASS
 ```
 
-### 10.2 `backend-executor-nestjs/references/project-profile.md`
+### 11.2 `backend-executor-nestjs/references/project-profile.md`
 ```md
 # Project Profile
 
@@ -183,7 +200,7 @@ cd ~/.codex/skills
 - immutableContracts: queryA shape, queryB shape
 ```
 
-### 10.3 `admin-executor-react/references/project-profile.md`
+### 11.3 `admin-executor-react/references/project-profile.md`
 ```md
 # Project Profile
 
@@ -193,17 +210,18 @@ cd ~/.codex/skills
 - permissionConstsPath: /path/to/src/types/const.ts
 ```
 
-### 10.4 `mobile-compat-guardian/references/project-profile.md`
+### 11.4 `mobile-compat-guardian/references/project-profile.md`
 ```md
 # Project Profile
 
-- mobileRepo: /path/to/mobile-repo
+- mobileRepo: /path/to/recl-rn
+- riderMobileRepo: /path/to/recl-rider-rn
 - backendRepo: /path/to/backend-repo
-- mobileContractQueries: queryA, queryB
+- mobileContractQueries: userAppQueryA, riderAppQueryB
 - snapshotPaths: /path/to/snapshots
 ```
 
-### 10.5 `test-automation-specialist/references/project-profile.md`
+### 11.5 `test-automation-specialist/references/project-profile.md`
 ```md
 # Project Profile
 
@@ -212,11 +230,13 @@ cd ~/.codex/skills
 - backendCoverageCmd: npm run test:cov
 - adminRepo: /path/to/admin-repo
 - adminTestCmd: npm run test
-- mobileCheckCmd: npm run test
-- immutableContracts: queryA shape, queryB shape
+- mobileRepo: /path/to/recl-rn
+- riderMobileRepo: /path/to/recl-rider-rn
+- mobileCheckCmd: run both mobile contract checks
+- immutableContracts: userAppQuery shape, riderAppQuery shape
 ```
 
-### 10.6 `qa-release-manager/references/project-profile.md`
+### 11.6 `qa-release-manager/references/project-profile.md`
 ```md
 # Project Profile
 
@@ -227,30 +247,30 @@ cd ~/.codex/skills
 - releasePolicy: fix-forward or rollback policy
 ```
 
-### 10.7 작성 체크리스트
+### 11.7 작성 체크리스트
 - 경로는 절대경로 또는 팀 표준 경로로 통일한다.
 - 테스트 명령은 실제 CI/로컬에서 그대로 실행 가능한 문자열로 작성한다.
 - immutableContracts 항목은 릴리즈 게이트 판정 기준과 반드시 일치시킨다.
 - 프로젝트별로 다른 값은 `project-profile.md`에만 두고, SKILL.md에는 넣지 않는다.
 
-## 11) 트러블슈팅
-### 10.1 검증 스크립트 실패
+## 12) 트러블슈팅
+### 12.1 검증 스크립트 실패
 - 가상환경 확인:
   - `~/.codex/skills/.venv-skill-tools`
 - 재실행:
   - `./scripts/validate-all-skills.sh`
 
-### 10.2 커밋이 거부됨
+### 12.2 커밋이 거부됨
 - 메시지가 `<type>: <한국어 요약>` 형식인지 확인
 - 새 기기면 `./scripts/setup-git-hooks.sh` 실행
 
-### 10.3 원격 push 실패
+### 12.3 원격 push 실패
 - SSH 인증 확인:
   - `ssh -T git@github.com`
 - 원격 URL 확인:
   - `git remote -v`
 
-## 12) 권장 운영 원칙
+## 13) 권장 운영 원칙
 - 오케스트레이터를 건너뛰고 전문 스킬을 직접 실행하지 않는다.
 - 문서-코드-테스트-배포 증거를 항상 연결한다.
 - FAIL/BLOCKED 상태에서 다음 단계로 진행하지 않는다.
