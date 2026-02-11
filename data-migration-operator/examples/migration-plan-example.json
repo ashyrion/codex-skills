@@ -1,0 +1,12 @@
+{
+  "input": {
+    "change": "introduce new scheduler tables",
+    "risk": "high"
+  },
+  "expected_output": {
+    "migrationPlan": "defined",
+    "precheckResult": "PASS",
+    "executionResult": "PASS",
+    "finalStatus": "GO"
+  }
+}

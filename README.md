@@ -33,6 +33,13 @@
 - `qa-release-manager`
 - 역할: 배포-마이그레이션-스모크 실행 및 GO/HOLD/NO-GO 판정
 
+### 보안/마이그레이션
+- `security-compliance-guard`
+- 역할: 민감정보 스캔, 공개 레포 안전성 검증
+
+- `data-migration-operator`
+- 역할: 마이그레이션 계획/검증/컷오버 런북 운영
+
 ## 3) 폴더 구조
 ```text
 ~/.codex/skills/
@@ -274,3 +281,10 @@ cd ~/.codex/skills
 - 오케스트레이터를 건너뛰고 전문 스킬을 직접 실행하지 않는다.
 - 문서-코드-테스트-배포 증거를 항상 연결한다.
 - FAIL/BLOCKED 상태에서 다음 단계로 진행하지 않는다.
+
+
+## 14) 기획 레퍼런스 링크
+- [Shape Up](https://basecamp.com/shapeup)
+- [Opportunity Solution Tree](https://www.producttalk.org/opportunity-solution-tree/)
+- [RICE Scoring](https://www.intercom.com/blog/rice-simple-prioritization-for-product-managers/)
+- [DACI Decision Making](https://www.atlassian.com/team-playbook/plays/daci)

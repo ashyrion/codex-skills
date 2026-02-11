@@ -1,0 +1,7 @@
+interface:
+  display_name: "Data Migration Operator"
+  short_description: "마이그레이션 계획·검증·컷오버를 안전하게 운영"
+  default_prompt: "Use $data-migration-operator to prepare and execute migration with prechecks, validation, and fix-forward strategy."
+
+policy:
+  allow_implicit_invocation: true

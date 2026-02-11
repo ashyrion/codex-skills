@@ -1,0 +1,11 @@
+{
+  "input": {
+    "repo": "<repoRoot>",
+    "scope": "tracked files"
+  },
+  "expected_output": {
+    "status": "PASS",
+    "findings": [],
+    "evidencePaths": ["reports/secret-scan.txt"]
+  }
+}

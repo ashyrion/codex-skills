@@ -17,6 +17,8 @@ skills=(
   mobile-compat-guardian
   test-automation-specialist
   qa-release-manager
+  security-compliance-guard
+  data-migration-operator
 )
 
 fail=0
