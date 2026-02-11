@@ -1,0 +1,7 @@
+interface:
+  display_name: "Mobile Compat Guardian"
+  short_description: "모바일 계약 불변성과 API 응답 영향도를 점검"
+  default_prompt: "Use $mobile-compat-guardian to verify mobile query contract invariants using the current project profile."
+
+policy:
+  allow_implicit_invocation: true

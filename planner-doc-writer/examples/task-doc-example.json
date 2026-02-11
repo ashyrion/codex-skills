@@ -1,0 +1,12 @@
+{
+  "input": {
+    "taskId": "T-Feature-UI",
+    "topic": "schedule page layout",
+    "sourceDocs": ["master-overview", "task-spec"]
+  },
+  "expected_output": {
+    "sections": ["purpose", "prerequisites", "ui-change", "tests", "dod"],
+    "traceability": true,
+    "linksUpdated": true
+  }
+}

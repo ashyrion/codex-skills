@@ -1,0 +1,12 @@
+{
+  "input": {
+    "change": "switch capacity calculation to new schedule source",
+    "mustKeep": ["immutable client contract fields"]
+  },
+  "expected_output": {
+    "migrationIncluded": true,
+    "unitTests": true,
+    "integrationTests": true,
+    "contractSnapshotPass": true
+  }
+}

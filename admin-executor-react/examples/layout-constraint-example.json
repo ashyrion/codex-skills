@@ -1,0 +1,11 @@
+{
+  "input": {
+    "page": "schedule grid",
+    "rules": ["date column sticky", "owner columns horizontal scroll", "holiday cell non-editable"]
+  },
+  "expected_output": {
+    "layoutImplemented": true,
+    "interactionGuards": true,
+    "uiTestsAdded": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "input": {
+    "suites": ["api-unit", "api-integration", "admin-ui", "contract-snapshot"]
+  },
+  "expected_output": {
+    "status": "PASS",
+    "summary": {"total": 120, "passed": 120, "failed": 0, "skipped": 0},
+    "coverageSummary": ">= target",
+    "snapshotDiff": "none"
+  }
+}

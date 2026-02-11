@@ -1,0 +1,7 @@
+interface:
+  display_name: "Stack Orchestrator Lead"
+  short_description: "멀티 리포 작업의 계획·배정·게이트를 총괄 관리"
+  default_prompt: "Use $stack-orchestrator-lead to classify the topic, assign owner skills, and produce a gate-based execution plan for the current project profile."
+
+policy:
+  allow_implicit_invocation: true

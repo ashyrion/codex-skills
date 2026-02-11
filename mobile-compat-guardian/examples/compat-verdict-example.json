@@ -1,0 +1,10 @@
+{
+  "input": {
+    "queries": ["<immutableQuery1>", "<immutableQuery2>"],
+    "beforeAfterSnapshot": "no shape diff"
+  },
+  "expected_output": {
+    "verdict": "SAFE",
+    "evidencePaths": ["<snapshotPathA>", "<snapshotPathB>"]
+  }
+}

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Admin Executor React"
+  short_description: "React/Vite 어드민 UI 구현과 상호작용 제약을 반영"
+  default_prompt: "Use $admin-executor-react to build admin pages with required layout rules, guards, and frontend tests from the project profile."
+
+policy:
+  allow_implicit_invocation: true

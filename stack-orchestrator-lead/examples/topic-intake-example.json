@@ -1,0 +1,15 @@
+{
+  "input": {
+    "topic": "scheduler pause policy",
+    "goal": "enforce pause then controlled reassignment flow",
+    "scope": ["backend", "admin"],
+    "constraints": ["keep client contract shape"],
+    "targetRepos": ["<backendRepo>", "<adminRepo>"]
+  },
+  "expected_output": {
+    "ownerSkill": "backend-executor-nestjs",
+    "supportSkills": ["admin-executor-react", "test-automation-specialist", "mobile-compat-guardian"],
+    "plannedOrder": ["design", "implementation", "tests", "smoke"],
+    "gateStatus": "PASS"
+  }
+}

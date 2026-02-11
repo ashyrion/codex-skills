@@ -1,0 +1,11 @@
+{
+  "input": {
+    "preGates": "PASS",
+    "migration": "success",
+    "smoke": "clean"
+  },
+  "expected_output": {
+    "decision": "GO",
+    "requiredEvidence": ["deploy-log", "migration-log", "smoke-report"]
+  }
+}

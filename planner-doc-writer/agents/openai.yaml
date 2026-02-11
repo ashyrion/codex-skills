@@ -1,0 +1,7 @@
+interface:
+  display_name: "Planner Doc Writer"
+  short_description: "대형 작업의 개요·태스크 문서를 구조적으로 유지"
+  default_prompt: "Use $planner-doc-writer to update the master plan and linked task documents with clear execution order and DoD."
+
+policy:
+  allow_implicit_invocation: true

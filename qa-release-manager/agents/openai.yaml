@@ -1,0 +1,7 @@
+interface:
+  display_name: "QA Release Manager"
+  short_description: "배포·마이그레이션·스모크를 검증해 릴리즈를 판정"
+  default_prompt: "Use $qa-release-manager to run deploy-migrate-smoke sequencing and produce a release readiness decision."
+
+policy:
+  allow_implicit_invocation: true

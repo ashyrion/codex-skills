@@ -1,0 +1,7 @@
+interface:
+  display_name: "Backend Executor NestJS"
+  short_description: "NestJS·TypeORM 백엔드 구현과 마이그레이션을 실행"
+  default_prompt: "Use $backend-executor-nestjs to implement backend domain changes, migrations, and backend test coverage using the project profile."
+
+policy:
+  allow_implicit_invocation: true
