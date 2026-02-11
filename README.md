@@ -146,7 +146,94 @@ cd ~/.codex/skills
 5. `agents/openai.yaml` 작성
 6. `./scripts/validate-all-skills.sh` 통과
 
-## 10) 트러블슈팅
+## 10) 프로젝트별 `project-profile.md` 작성 예시
+### 10.1 `stack-orchestrator-lead/references/project-profile.md`
+```md
+# Project Profile
+
+## Workspace
+- backendRepo: /path/to/backend-repo
+- adminRepo: /path/to/admin-repo
+- mobileRepo: /path/to/mobile-repo
+- docsRoot: /path/to/docs
+
+## Contracts
+- immutableQueries: queryA, queryB
+- immutableResponseFields: queryA(field1, field2), queryB shape
+
+## Tooling
+- packageManager: npm
+- backendTestCmd: npm run test
+- adminTestCmd: npm run test
+- mobileCheckCmd: npm run test
+
+## Gates
+- requiredStages: design, implementation, tests, release
+- passCriteria: all required checks PASS
+```
+
+### 10.2 `backend-executor-nestjs/references/project-profile.md`
+```md
+# Project Profile
+
+- backendRepo: /path/to/backend-repo
+- backendTestCmd: npm run test
+- backendCoverageCmd: npm run test:cov
+- migrationCmd: npm run migration:run:dev
+- immutableContracts: queryA shape, queryB shape
+```
+
+### 10.3 `admin-executor-react/references/project-profile.md`
+```md
+# Project Profile
+
+- adminRepo: /path/to/admin-repo
+- adminTestCmd: npm run test
+- routingEntry: /path/to/src/App.tsx
+- permissionConstsPath: /path/to/src/types/const.ts
+```
+
+### 10.4 `mobile-compat-guardian/references/project-profile.md`
+```md
+# Project Profile
+
+- mobileRepo: /path/to/mobile-repo
+- backendRepo: /path/to/backend-repo
+- mobileContractQueries: queryA, queryB
+- snapshotPaths: /path/to/snapshots
+```
+
+### 10.5 `test-automation-specialist/references/project-profile.md`
+```md
+# Project Profile
+
+- backendRepo: /path/to/backend-repo
+- backendTestCmd: npm run test
+- backendCoverageCmd: npm run test:cov
+- adminRepo: /path/to/admin-repo
+- adminTestCmd: npm run test
+- mobileCheckCmd: npm run test
+- immutableContracts: queryA shape, queryB shape
+```
+
+### 10.6 `qa-release-manager/references/project-profile.md`
+```md
+# Project Profile
+
+- deployTarget: test-server
+- deployCmd: <your deploy command>
+- migrationCmd: <your migration command>
+- smokeCmds: apiA, apiB, adminC
+- releasePolicy: fix-forward or rollback policy
+```
+
+### 10.7 작성 체크리스트
+- 경로는 절대경로 또는 팀 표준 경로로 통일한다.
+- 테스트 명령은 실제 CI/로컬에서 그대로 실행 가능한 문자열로 작성한다.
+- immutableContracts 항목은 릴리즈 게이트 판정 기준과 반드시 일치시킨다.
+- 프로젝트별로 다른 값은 `project-profile.md`에만 두고, SKILL.md에는 넣지 않는다.
+
+## 11) 트러블슈팅
 ### 10.1 검증 스크립트 실패
 - 가상환경 확인:
   - `~/.codex/skills/.venv-skill-tools`
@@ -163,7 +250,7 @@ cd ~/.codex/skills
 - 원격 URL 확인:
   - `git remote -v`
 
-## 11) 권장 운영 원칙
+## 12) 권장 운영 원칙
 - 오케스트레이터를 건너뛰고 전문 스킬을 직접 실행하지 않는다.
 - 문서-코드-테스트-배포 증거를 항상 연결한다.
 - FAIL/BLOCKED 상태에서 다음 단계로 진행하지 않는다.
